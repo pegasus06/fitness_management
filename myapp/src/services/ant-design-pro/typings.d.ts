@@ -2,33 +2,37 @@
 /* eslint-disable */
 
 declare namespace API {
-  type CurrentUser = {
-    name?: string;
-    avatar?: string;
-    userid?: string;
-    email?: string;
-    signature?: string;
-    title?: string;
-    group?: string;
-    tags?: { key?: string; label?: string }[];
-    notifyCount?: number;
-    unreadCount?: number;
-    country?: string;
-    access?: string;
-    geographic?: {
-      province?: { label?: string; key?: string };
-      city?: { label?: string; key?: string };
-    };
-    address?: string;
+  type CurrentUser ={
+    id?: number;
+    userAccount?: string;
+    userPassword?: string;
+    userName?: string;
+    avatarUrl?: string;
+    gender?: number;
     phone?: string;
+    email?: string;
+    userStatus?: number;
+    createTime?: Date;
+    userRole?:number;
+
   };
 
   type LoginResult = {
-    status?: string;
-    type?: string;
-    currentAuthority?: string;
+    code?: number;
+    data?: string;
+    message?: string;
   };
-
+type SearchList={
+      code?: number;
+    data?: string;
+    message?: string;
+};
+  
+  type RegisterResult = {
+    code?: number;
+    data?: string;
+    message?: string;
+  };
   type PageParams = {
     current?: number;
     pageSize?: number;
@@ -64,7 +68,13 @@ declare namespace API {
   type LoginParams = {
     userAccount?: string;
     userPassword?: string;
-    autoLogin?: boolean;
+    checkPassword?: boolean;
+    type?: string;
+  };
+    type RegisterParams = {
+    userAccount?: string;
+    userPassword?: string;
+    checkPassword?: boolean;
     type?: string;
   };
 

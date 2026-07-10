@@ -35,6 +35,12 @@ const Register: React.FC = () => {
 
   // 注册表单提交
   const handleRegister = async (values: API.RegisterParams) => {
+    const {userPassword, checkPassword} = values;
+    if (userPassword !== checkPassword) {
+      message.error('两次密码不一致');
+      return;
+      
+    }
     setSubmitting(true);
     setErrorMsg('');
     try {
@@ -108,7 +114,7 @@ const Register: React.FC = () => {
             ]}
           />
 
-          {/* 手机号 + 验证码 */}
+          {/* 手机号 + 验证码
           <ProFormText
             name="phone"
             placeholder="请输入手机号"
@@ -130,7 +136,7 @@ const Register: React.FC = () => {
               message.success('验证码发送成功');
             }}
             rules={[{ required: true, message: '请输入验证码' }]}
-          />
+          /> */}
 
           {/* 密码 */}
           <ProFormText.Password
